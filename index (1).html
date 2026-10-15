@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa de agrupación de los 56 nodos | Falabella</title>
+<style>
+:root{--ink:#172033;--muted:#58657a;--line:#dce3ec;--wash:#f4f7fb;--brand:#163a63;--accent:#2e6a9e;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--wash);color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:linear-gradient(120deg,#122f50,#245783);color:#fff;padding:42px 22px 34px}header .wrap,main{max-width:1200px;margin:0 auto} .eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.76rem;font-weight:750;opacity:.82}h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.15;margin:.5rem 0 .75rem}header p{max-width:850px;margin:0;color:#e4edf7}
+main{padding:26px 18px 48px}.intro{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:18px;box-shadow:0 3px 12px #132f5010}.intro strong{color:var(--brand)}.table-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 4px 20px #16253b0b}.table-head{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}.table-head h2{font-size:1.12rem;margin:0}.search{min-width:230px;max-width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:9px;font:inherit}.scroll{overflow:auto;max-height:72vh}table{border-collapse:separate;border-spacing:0;width:100%;min-width:760px}thead th{position:sticky;top:0;background:#eaf0f7;color:#1c3553;text-align:left;font-size:.88rem;font-weight:750;z-index:1}th,td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}tbody tr:nth-child(even){background:#fafcff}tbody tr:hover{background:#f0f6fc}td:first-child{font-weight:700;color:#173f67;white-space:nowrap}.kind{display:inline-block;padding:3px 8px;border-radius:999px;font-size:.75rem;font-weight:750;background:#e8f1fa;color:#214e79}.kind.tech{background:#f0ecfa;color:#5d4388}.kind.absorb{background:#e5f5ed;color:#196543}.control{margin-top:16px;border:1px solid var(--line);border-left:4px solid var(--accent);background:#fff;border-radius:10px;padding:14px 16px}.control p{margin:.25rem 0}.foot{font-size:.88rem;color:var(--muted);margin-top:18px}.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}.links a{color:#164e80;font-weight:650;text-decoration:none}.links a:hover{text-decoration:underline}footer{max-width:1200px;margin:0 auto;padding:0 18px 30px;color:var(--muted);font-size:.84rem}
+@media(max-width:620px){header{padding:30px 18px}main{padding:18px 10px 32px}.intro{padding:15px}.table-head{align-items:stretch}.search{width:100%;min-width:0}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="eyebrow">Tesis · Customer Journey</div><h1>Mapa de agrupación de los 56 nodos</h1><p>Clasificación funcional de los nodos originales en estados de navegación para la cadena de Markov de Falabella.</p></div></header>
+<main>
+<section class="intro"><strong>Cómo leer la tabla:</strong> cada estado agrupa nodos que cumplen una función similar dentro del recorrido. INICIO y ABANDONO se agregan al construir la cadena; COMPRA se trata como estado absorbente.</section>
+<section class="table-card"><div class="table-head"><h2>Estados y nodos asignados</h2><input id="search" class="search" type="search" placeholder="Buscar estado o nodo…" aria-label="Buscar estado o nodo"></div>
+<div class="scroll"><table id="nodes"><thead><tr><th style="width:27%">Estado</th><th>Nodos</th></tr></thead><tbody>
+<tr><td><span class="kind tech">Técnico</span><br>INICIO</td><td>Se agrega al construir la cadena</td></tr>
+<tr><td>1. Portada</td><td>HOME, HOME_CONTEXT</td></tr>
+<tr><td>2. Búsqueda</td><td>SLP (solo SLP_SEARCH), SEARCHNOTRESULT</td></tr>
+<tr><td>3. Listado</td><td>PLP, CATEGORÍAS, NOSEARCHRESULT</td></tr>
+<tr><td>4. Producto</td><td>PDP, PRODUCT_DETAIL, LANDING</td></tr>
+<tr><td>5. Agregar al carro</td><td>ATC, CONTINUE_WITHOUT_PROTECTION, WARRANTY_MODAL_VIEW, ADD_PROTECTION, WARRANTY_OPTION_SELECTED, CONTINUAR SIN PROTECCIÓN</td></tr>
+<tr><td>6. Carrito</td><td>CART, BASKET</td></tr>
+<tr><td>7. Checkout</td><td>CHECKOUT_ONEPAGE, CHECKOUT_PAYMENT, CHECKOUT_SHIPPING, ONE_PAGE_CHECKOUT, CHECKOUT_LOGIN, CHECKOUT, PAYMENT, USER ADDRESS PAGE, ADDRESSLIST, ADDRESSMAP, ADDADDRESSFORM</td></tr>
+<tr><td>8. Cuenta y servicios</td><td>MYACCOUNT, MY LISTS PAGE, MIS LISTAS, MOREMENU_BUTTON, MORE MENU PAGE, NOTIFICATIONS PAGE, NOTIFICATION PAGE, EN TIENDA, LOGIN, REGISTRATION, FORGOT_PASSWORD, RESET_PASSWORD, CHANGE PASSWORD PAGE, OTP, PERSONAL DETAIL PAGE, PAYMENT MODES PAGE, COUPONS PAGE, MYCOUPONS, BANK REFUND PAGE, MY ACCOUNT HELP CENTER PAGE, MY_ACCOUNT, PAGE_TYPE</td></tr>
+<tr><td>9. Otros / técnico</td><td>DEFAULT, MKT_OPEN_URL_EVENT, PUSHNOTIFICATION, CONFIRMATION + SLP_RESIDUAL</td></tr>
+<tr><td><span class="kind absorb">Absorbente</span><br>COMPRA</td><td>PURCHASE</td></tr>
+<tr><td><span class="kind tech">Técnico · absorbente</span><br>ABANDONO</td><td>Se agrega al construir la cadena</td></tr>
+</tbody></table></div></section>
+<div class="control"><p><strong>Control de nodos:</strong> 2 + 2 + 3 + 3 + 6 + 2 + 11 + 22 + 4 + 1 = <strong>56 nodos</strong>.</p><p>SLP es el único que se reparte en dos estados.</p></div>
+<div class="links"><a href="detalle-estados.html">Ver desglose de estados: hits, evidencia y validación →</a></div>
+<p class="foot">La tabla describe la agrupación definida para el análisis; INICIO y ABANDONO se incorporan técnicamente al construir las secuencias.</p>
+</main><footer>Falabella · Customer Journey · Tesis de Magíster</footer>
+<script>document.getElementById('search').addEventListener('input',function(){const q=this.value.toLocaleLowerCase('es');document.querySelectorAll('#nodes tbody tr').forEach(r=>r.hidden=!r.innerText.toLocaleLowerCase('es').includes(q));});</script>
+</body></html>
