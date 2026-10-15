@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supuestos y validaciones pendientes | Falabella</title>
+<style>
+:root{--ink:#172033;--muted:#58657a;--line:#dce3ec;--wash:#f4f7fb;--brand:#163a63;--accent:#2e6a9e;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--wash);color:var(--ink);font:15px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:linear-gradient(120deg,#122f50,#245783);color:#fff;padding:42px 22px 34px}header .wrap,main,footer{max-width:1500px;margin:0 auto}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.76rem;font-weight:750;opacity:.82}h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.15;margin:.5rem 0 .75rem}header p{max-width:1050px;margin:0;color:#e4edf7}
+main{padding:26px 18px 48px}.intro{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:18px}.intro strong{color:var(--brand)}.table-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 4px 20px #16253b0b}.table-head{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}.table-head h2{font-size:1.12rem;margin:0}.search{min-width:260px;max-width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:9px;font:inherit}.scroll{overflow:auto;max-height:76vh}table{border-collapse:separate;border-spacing:0;width:100%;min-width:1250px;table-layout:fixed}thead th{position:sticky;top:0;background:#eaf0f7;color:#1c3553;text-align:left;font-size:.88rem;font-weight:750;z-index:1}th,td{padding:14px 15px;border-bottom:1px solid var(--line);border-right:1px solid #edf0f5;vertical-align:top;overflow-wrap:anywhere}th:last-child,td:last-child{border-right:0}tbody tr:nth-child(even){background:#fafcff}tbody tr:hover{background:#f0f6fc}td:first-child{font-weight:750;color:#173f67}.badge{display:inline-block;padding:3px 8px;border-radius:999px;font-size:.75rem;font-weight:750;background:#e8f1fa;color:#214e79}.foot{font-size:.88rem;color:var(--muted);margin-top:18px}.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}.links a{color:#164e80;font-weight:650;text-decoration:none}.links a:hover{text-decoration:underline}.hint{font-size:.9rem;color:var(--muted);margin:12px 2px 0}footer{padding:0 18px 30px;color:var(--muted);font-size:.84rem}
+@media(max-width:620px){header{padding:30px 18px}main{padding:18px 10px 32px}.intro{padding:15px}.table-head{align-items:stretch}.search{width:100%;min-width:0}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="eyebrow">Tesis · Customer Journey</div><h1>Supuestos y validaciones pendientes</h1><p>Mapa de los supuestos de la primera estimación de Markov, la evidencia disponible en nuestros datos y la forma en que se abordará cada limitación.</p></div></header>
+<main>
+<section class="intro"><strong>Cómo leer la tabla:</strong> la primera columna resume lo que se asumió para construir el modelo; la segunda señala qué factor podría faltar; la tercera recoge la evidencia disponible y la última indica dónde se revisará. Estos puntos guían las fases de validación y los análisis complementarios, no significan por sí solos que el modelo esté mal.</section>
+<section class="table-card"><div class="table-head"><h2>Supuestos, evidencia y próximos pasos</h2><input id="search" class="search" type="search" placeholder="Buscar supuesto, evidencia o fase…" aria-label="Buscar supuesto, evidencia o fase"></div>
+<div class="scroll"><table id="assumptions"><colgroup><col style="width:22%"><col style="width:23%"><col style="width:27%"><col style="width:28%"></colgroup><thead><tr><th>Lo que asumimos (factor X)</th><th>Lo que falta (factor Y)</th><th>Evidencia en nuestros datos</th><th>Cómo se aborda</th></tr></thead><tbody>
+<tr><td>El siguiente paso depende solo del estado actual</td><td>Memoria de dónde viene y si ya tocó el carro</td><td>Tabla de arriba; BIC favorece orden 2</td><td><span class="badge">Fase 5.1</span></td></tr>
+<tr><td>Una visita es un recorrido completo</td><td>El cliente decide a lo largo de varias visitas</td><td>66,7% de las visitas de compradores que dejaron el carro terminan en compra más tarde; Moe y Fader (2004) muestran que la compra se va construyendo visita a visita</td><td>Leer “fuga” como fin de visita; análisis por cliente como complemento</td></tr>
+<tr><td>Todas las visitas de un comprador son iguales</td><td>Visitas antes vs. después de comprar</td><td>56,6% son posteriores a su compra; Cuenta 20,4% vs. 6,3%</td><td>Cadena de compradores antes de su compra (Fase 6)</td></tr>
+<tr><td>Todas las visitas navegan</td><td>Rebotes de un solo estado</td><td>28,0% de las visitas de compradores y 55,6% de las de no compradores; 43,9% de los abandonos en Producto</td><td>Cadena sin rebotes y por estado de entrada (Fase 6)</td></tr>
+<tr><td>App y web registran igual</td><td>Agregar al carro solo existe en la app</td><td>89,0% de las visitas son app, 7,6% web y 3,4% mezclan ambas</td><td>Sensibilidad solo app (Fase 6)</td></tr>
+<tr><td>Las probabilidades son iguales todo el mes</td><td>Cyber y fines de semana</td><td>No revisado aún (peak 30–31 de julio)</td><td><span class="badge">Fase 5.2</span></td></tr>
+<tr><td>Cada visita pesa igual</td><td>Clientes muy activos</td><td>El 10% de compradores más activos hace el 27,8% de sus visitas</td><td>Fases 5.4 y 5.5</td></tr>
+<tr><td>La muestra es comparable con el sitio</td><td>Muestra 50/50 de clientes</td><td>El 7,11% de compra es de la muestra</td><td>Reportar por grupo, no como conversión de Falabella</td></tr>
+<tr><td>Los porcentajes son exactos</td><td>Incertidumbre</td><td>Filas con menos de 1.000 salidas en no compradores</td><td>Bootstrap por cliente (Fase 5.4)</td></tr>
+</tbody></table></div></section>
+<p class="hint">En computador o celular, desplázate horizontalmente para ver la tabla completa. Puedes usar el buscador para filtrar por tema o fase.</p>
+<div class="links"><a href="./">← Volver al mapa de agrupación de los 56 nodos</a><a href="detalle-estados.html">Ver desglose y evidencia de los estados →</a></div>
+<p class="foot">Falabella · Customer Journey · Tesis de Magíster</p>
+</main><footer>Documento de trabajo: supuestos y validaciones de las cadenas de Markov.</footer>
+<script>document.getElementById('search').addEventListener('input',function(){const q=this.value.toLocaleLowerCase('es');document.querySelectorAll('#assumptions tbody tr').forEach(r=>r.hidden=!r.innerText.toLocaleLowerCase('es').includes(q));});</script>
+</body></html>
